@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b37kv8ftuitrh"]
+
+[ext_resource type="Script" path="res://scenes/grid/grid.gd" id="1_qdu8k"]
+[ext_resource type="AudioStream" uid="uid://6c71hthu7sn5" path="res://sounds/maou_se_sound23.wav" id="2_noe21"]
+[ext_resource type="AudioStream" uid="uid://dgjptkjv2wcsq" path="res://sounds/maou_se_system38.wav" id="2_scb6t"]
+
+[node name="Grid" type="Node2D"]
+script = ExtResource("1_qdu8k")
+
+[node name="MoveAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_noe21")
+volume_db = -10.0
+
+[node name="ErrorAudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_scb6t")
+volume_db = -10.0

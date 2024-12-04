@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://e3yfwsov5txa"]
+
+[ext_resource type="Texture2D" uid="uid://gyt7eorcyhai" path="res://scenes/main/background.png" id="1_h66tt"]
+[ext_resource type="PackedScene" uid="uid://b37kv8ftuitrh" path="res://scenes/grid/grid.tscn" id="2_qui1y"]
+[ext_resource type="Script" path="res://scenes/main/hud.gd" id="3_50ueg"]
+[ext_resource type="FontFile" uid="uid://eg37l3twt6m5" path="res://fonts/neodgm.ttf" id="3_rm0tf"]
+[ext_resource type="Texture2D" uid="uid://dde6f772x72xn" path="res://scenes/main/reset.png" id="5_1gice"]
+[ext_resource type="Texture2D" uid="uid://dixplttsaehay" path="res://scenes/main/reset_pressed.png" id="6_xhqk5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pjr18"]
+font = ExtResource("3_rm0tf")
+font_size = 32
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2addi"]
+font = ExtResource("3_rm0tf")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 1, 1, 1)
+
+[node name="Main" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(270, 320)
+texture = ExtResource("1_h66tt")
+
+[node name="Grid" parent="." instance=ExtResource("2_qui1y")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_50ueg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BestMarginContainer" type="MarginContainer" parent="HUD/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+
+[node name="Best" type="Label" parent="HUD/VBoxContainer/BestMarginContainer"]
+layout_mode = 2
+text = "BEST : 00000"
+label_settings = SubResource("LabelSettings_pjr18")
+
+[node name="ScoreMarginContainer2" type="MarginContainer" parent="HUD/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+
+[node name="Score" type="Label" parent="HUD/VBoxContainer/ScoreMarginContainer2"]
+layout_mode = 2
+text = "SCORE: 00000"
+label_settings = SubResource("LabelSettings_2addi")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+offset_left = 448.0
+offset_top = 8.0
+offset_right = 532.0
+offset_bottom = 92.0
+
+[node name="Button" type="Button" parent="HUD/MarginContainer"]
+layout_mode = 2
+icon = ExtResource("5_1gice")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureButton" type="TextureButton" parent="HUD/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_1gice")
+texture_pressed = ExtResource("6_xhqk5")
